@@ -118,7 +118,6 @@ function decrement(id: number, quantity: number) {
 };
 function increment(id: number, quantity: number) {
     console.log(quantity);
-
     const itemIndex = settings.value.findIndex((e) => e.id === id)
     settings.value[itemIndex] = { ...settings.value[itemIndex], item: ++quantity }
     store.updateRemoveSettings(settings.value)
