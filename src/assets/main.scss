@@ -1,0 +1,55 @@
+@import url('./font/stylesheet.css');
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+
+body{
+    margin: 0;
+    padding: 0;
+    
+}
+.swiper{
+    position: unset !important;
+}
+.swiper-button-prev {
+    color: #000;
+    position: absolute;
+    top: 17px;
+    right: 50px;
+    left: auto;
+z-index: 1;
+@media (max-width:1200px) {
+    top: -10px;
+  }
+  }
+
+  .swiper-button-prev::after {
+    content: "\2190" !important;
+    font-size: 30px;
+    @media (max-width:797px) {
+        font-size: 25px;
+
+  
+      }
+  }
+
+  .swiper-button-next::after {
+    content: "\2192" !important;
+    font-size: 30px;
+    @media (max-width:797px) {
+        font-size: 25px;
+
+  
+      }
+  }
+
+  .swiper-button-next {
+    color: #000;
+    position: absolute;
+    top: 17px;
+    left: auto;
+    right: 5px;
+    z-index: 1;
+    @media (max-width:1200px) {
+      top: -10px;
+    }
+  }
+
