@@ -112,6 +112,7 @@ function addToCart(id:number, quantitys:number) {
       transition: .4s;
       width: 100%;
       margin: 20px 0px 0 20px;
+      cursor: pointer;
 
       &:hover {
         background-color: transparent;
@@ -234,6 +235,8 @@ function addToCart(id:number, quantitys:number) {
   padding: 10px 20px;
   border-radius: 60px;
   width: fit-content;
+cursor: pointer;
+
 }
 
 .quantity {

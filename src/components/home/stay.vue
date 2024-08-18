@@ -91,6 +91,7 @@ section.stay
       width: 100%;
       transition: .3s;
       font-weight: 500;
+      cursor: pointer;
 
       &:hover {
         background-color: transparent;

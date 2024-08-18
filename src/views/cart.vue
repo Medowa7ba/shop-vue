@@ -71,9 +71,11 @@ const amounts = ref()
 const API = fetch('https://fakestoreapi.com/products');
 import { storeToRefs } from 'pinia'
 import { useStore } from '../stores/cart';
+import { useTitle } from '@vueuse/core';
+const title = useTitle()
+title.value = 'Cart'
 const store = useStore()
 const { settings } = storeToRefs(store)
-
 
 function getCart() {
     API.then(response => response.clone().json())
@@ -252,6 +254,7 @@ function increment(id: number, quantity: number) {
             transition: .4s;
             margin-left: 10px;
             margin-bottom: 20px;
+            cursor: pointer;
 
             &:hover {
                 background-color: transparent;
@@ -309,6 +312,7 @@ function increment(id: number, quantity: number) {
             border-radius: 50px;
             transition: .4s;
             margin-top: 15px;
+            cursor: pointer;
 
             svg {
                 fill: #fff;

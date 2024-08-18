@@ -71,24 +71,27 @@ Custmores
 Stay
 </template>
 <script setup lang="ts">
-import Card from '@/components/home/card.vue'; 
-import Browse from '@/components/home/browse.vue'; 
+import Card from '@/components/home/card.vue';
+import Browse from '@/components/home/browse.vue';
 import Custmores from '@/components/home/custmores.vue'
 import Stay from '@/components/home/stay.vue'
-
+import { useTitle } from '@vueuse/core'
+const title = useTitle()
+title.value = 'Home'
 import { ref } from 'vue';
 const data = ref()
 const api = 'https://fakestoreapi.com/products';
 fetch(api)
-    .then(res=>res.json())
-    .then(json=>{
-        data.value = json;      
-    })
+  .then(res => res.json())
+  .then(json => {
+    data.value = json;
+  })
 </script>
 
 <style lang="scss" scoped>
 .section {
   background-color: #F2F0F1;
+
   @media(max-width: 992px) {
     padding: 50px 0 0 0;
   }
@@ -138,11 +141,13 @@ fetch(api)
     border-radius: 50px;
     font-family: 'Satoshi', sans-serif;
     transition: .4s;
+    cursor: pointer;
 
     @media(max-width: 570px) {
       padding: 5px 30px;
 
     }
+
     &:hover {
       background-color: transparent;
       color: #000;
@@ -236,6 +241,7 @@ fetch(api)
 
   }
 }
+
 .logos {
   background-color: #000;
   padding: 50px 0;
@@ -263,5 +269,4 @@ fetch(api)
     }
   }
 }
-
 </style>

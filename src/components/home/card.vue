@@ -164,7 +164,7 @@ section{
       border-radius: 50px;
       font-family: 'Satoshi', sans-serif;
       transition: .4s;
-
+cursor: pointer;
       @media(max-width: 570px) {
         padding: 5px 30px;
 
