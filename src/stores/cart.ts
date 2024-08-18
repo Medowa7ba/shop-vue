@@ -12,7 +12,7 @@ export const useStore = defineStore(STORE_NAME, {
     updateSettings(partialSettings: {id:number, item: number}) {
       const cart = this.activeCard();
       const find = cart.findIndex((x) => x.id === partialSettings.id);
-      if (find <= 0) {
+      if (find < 0) {
         cart.push(partialSettings);
         localStorage.setItem(STORE_NAME, JSON.stringify(this.settings));
       } else {

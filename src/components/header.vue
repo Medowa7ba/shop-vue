@@ -39,10 +39,11 @@ header
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 const count = ref()
 import { storeToRefs } from 'pinia'
 import { useStore } from '../stores/cart';
+import { useWindowScroll } from '@vueuse/core';
 const store = useStore()
 const { settings } = storeToRefs(store)
 

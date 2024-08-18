@@ -2,7 +2,7 @@
 section
     .container 
         h2 {{ title }}
-        .row
+        .row.d-none.d-lg-flex
             .col-lg-3.col-md-6.col-sm-06.mt-3(v-for="i in data?.slice(0, limit)")
                 RouterLink(:to="'/product/' + i.id ")
                     .card-img
@@ -28,6 +28,7 @@ section
                             h6 ${{ i.price }}
             .justify-content-center.d-flex.mt-5#leadMore(v-if="readMore" @click="addMore()")
                 button#leadMoreBtn(v-if="data?.length > limit") View All
+    
 </template>
 
 <script lang="ts" setup>

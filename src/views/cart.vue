@@ -2,7 +2,7 @@
 section.app-cart
     .container
         h1 Your cart
-        .row(v-if="arrData")
+        .row(v-if="settings.length > 0")
             .col-lg-7
                 .shopping-cart.scroll 
                     .cart-item
@@ -38,14 +38,14 @@ section.app-cart
                         h5 Order Summary
                         .d-flex.justify-content-between.align-items-center
                             p Subtotal
-                            h6 {{ amounts.toFixed(2) }}
+                            h6 {{ amounts[0] }}
                         .d-flex.justify-content-between.align-items-center
                             p Delivery
                             h6 ${{delivery}}
                         .cards-total
                             .d-flex.justify-content-between.align-items-center
                                 p Total
-                                h6 {{(amounts + delivery).toFixed(2)}}
+                                h6 {{(amounts + delivery)}}
                         .apply
                             .w-100
                                 input(type="text", placeholder="Add promo code")
@@ -98,15 +98,12 @@ function removeItem(id:number) {
 function TotalAmount() {
     API.then(response => response.clone().json())
         .then(data => {
-            let amount = settings.value
-                .map((x) => {
+            let amount = settings.value.map((x) => {
                     let { id, item } = x;
                     let filterData = data.find((x:{id:number}) => x.id === id) || [];
                     return filterData.price * item;
                 })
-                .reduce((x:number, y:number) => x + y);
             amounts.value = amount
-
         })
     
 }

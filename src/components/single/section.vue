@@ -45,17 +45,10 @@ section.app-gallary
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useRoute } from 'vue-router';
   import { storeToRefs } from 'pinia'
   import { useStore } from '../../stores/cart';
   const store = useStore()
-
-  const { settings } = storeToRefs(store)
-
-  // const handleToggleFontSizeClick = () => {
-
 const currentTab = ref(0);
-const route = useRoute()
 const props = defineProps(['Singledata']);
 let num = 1;
 const quantity = ref()
