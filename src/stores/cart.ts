@@ -7,25 +7,29 @@ const getSetting = () => {
 export const useStore = defineStore(STORE_NAME, {
   state: () => ({
     settings: getSetting() as { id: number; item: number }[],
-    cartCount: getSetting().length,
   }),
   actions: {
-    updateSettings(partialSettings) {
-      const find = this.activeCard().find((x) => x.id === partialSettings.id);
-      if (!find) {
-        this.activeCard().push(partialSettings);
+    updateSettings(partialSettings: {id:number, item: number}) {
+      const cart = this.activeCard();
+      const find = cart.findIndex((x) => x.id === partialSettings.id);
+      if (find <= 0) {
+        cart.push(partialSettings);
         localStorage.setItem(STORE_NAME, JSON.stringify(this.settings));
-        this.cartCount++
-      } 
+      } else {
+        cart[find] = {
+          ...cart[find],
+          item: partialSettings.item + cart[find].item,
+        };
+        this.updateRemoveSettings(cart);
+      }
     },
     activeCard(): any[] {
       const card = getSetting();
       this.settings = card;
       return card;
     },
-    updateRemoveSettings(data) {
+    updateRemoveSettings(data:any) {
       localStorage.setItem(STORE_NAME, JSON.stringify(data));
-
       return this.activeCard();
     },
   },

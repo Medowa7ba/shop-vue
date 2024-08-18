@@ -54,9 +54,6 @@ import { useRoute } from 'vue-router';
 
   // const handleToggleFontSizeClick = () => {
 
-let localStorageData = JSON.parse(localStorage.getItem("data")) || [];
-console.log(localStorageData);
-
 const currentTab = ref(0);
 const route = useRoute()
 const props = defineProps(['Singledata']);
@@ -73,7 +70,7 @@ function decrement(id: number) {
   num = (num - 1 <= 0) ? 1 : num - 1
 quantity.value = num
 };
-function addToCart(id, quantitys) {
+function addToCart(id:number, quantitys:number) {
     store.updateSettings({
       id: id,
       item: quantitys,

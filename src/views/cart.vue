@@ -65,7 +65,7 @@ section.app-cart
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-const arrData = ref<[]>()
+const arrData = ref<string[]>()
 const delivery = ref(15);
 const amounts = ref()
 const API = fetch('https://fakestoreapi.com/products');
@@ -78,9 +78,9 @@ const { settings } = storeToRefs(store)
 function getCart() {
     API.then(response => response.clone().json())
         .then(data => {
-            arrData.value = settings.value.map((x) => {
+            arrData.value = settings.value.map((x:{id:number, item: number}) => {
                 let { id, item } = x;
-                const existingItem = data.find((x) => x.id === id);
+                const existingItem = data.find((x:any) => x.id === id);
                 return { ...existingItem, quntaty: item }
             })
 
@@ -88,9 +88,9 @@ function getCart() {
         TotalAmount()
 }
 getCart()
-function removeItem(id) {
+function removeItem(id:number) {
     console.log('adsfgh');
-    const updatedCart = settings.value.filter((x) => x.id !== id) || [];
+    const updatedCart = settings.value.filter((x:{id:number}) => x.id !== id) || [];
     store.updateRemoveSettings(updatedCart)
     getCart();
     TotalAmount()
@@ -101,10 +101,10 @@ function TotalAmount() {
             let amount = settings.value
                 .map((x) => {
                     let { id, item } = x;
-                    let filterData = data.find((x) => x.id === id) || [];
+                    let filterData = data.find((x:{id:number}) => x.id === id) || [];
                     return filterData.price * item;
                 })
-                .reduce((x, y) => x + y);
+                .reduce((x:number, y:number) => x + y);
             amounts.value = amount
 
         })

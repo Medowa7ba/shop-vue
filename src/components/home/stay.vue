@@ -15,7 +15,7 @@ section.stay
             button Subscribe to Newsletter
 </template>
 
-<script>
+<script lang="ts" setup>
 
 </script>
 

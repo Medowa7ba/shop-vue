@@ -186,10 +186,8 @@ footer
                 feBlend(mode="normal", in="SourceGraphic", in2="effect2_dropShadow_202_558", result="shape")
 </template>
 
-<script>
-export default {
+<script lang="ts" setup>
 
-}
 </script>
 
 <style lang="scss" scoped>

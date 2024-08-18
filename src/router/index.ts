@@ -21,7 +21,10 @@ const router = createRouter({
       name: 'product',
       component: Product
     },
-  ]
+  ],
+  scrollBehavior() {
+    document.getElementById('app')!.scrollIntoView({ behavior: 'auto' });
+}
 })
 
 export default router
